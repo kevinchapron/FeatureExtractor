@@ -83,7 +83,7 @@ func (l *FeatureExtractor) CalcFrequentialFeatures(){
 }
 
 // Method to return number of sensors registered
-func (l *FeatureExtractor) length() int{
+func (l *FeatureExtractor) Length() int{
 	return len(l.Data.GetSensors())
 }
 
@@ -93,7 +93,7 @@ func (l *FeatureExtractor) avgX() float64{
 	for _,elt := range(l.Data.GetSensors()) {
 		avg += elt.x
 	}
-	return avg / float64(l.length())
+	return avg / float64(l.Length())
 }
 // Average of Y-Axis
 func (l *FeatureExtractor) avgY() float64{
@@ -101,7 +101,7 @@ func (l *FeatureExtractor) avgY() float64{
 	for _,elt := range(l.Data.GetSensors()) {
 		avg += elt.y
 	}
-	return avg / float64(l.length())
+	return avg / float64(l.Length())
 }
 // Average of Z-Axis
 func (l *FeatureExtractor) avgZ() float64{
@@ -109,7 +109,7 @@ func (l *FeatureExtractor) avgZ() float64{
 	for _,elt := range(l.Data.GetSensors()) {
 		avg += elt.z
 	}
-	return avg / float64(l.length())
+	return avg / float64(l.Length())
 }
 // Average of All combined axis
 func (l *FeatureExtractor) avgTotal() float64{
@@ -120,7 +120,7 @@ func (l *FeatureExtractor) avgTotal() float64{
 // l'écart-type For X-Axis
 func (l *FeatureExtractor) deviationX() float64{
 	var avgX float64 = l.__avgX__
-	var length = float64(l.length())
+	var length = float64(l.Length())
 	var deviation float64 = 0
 
 	for _,elt := range l.Data.GetSensors(){
@@ -132,7 +132,7 @@ func (l *FeatureExtractor) deviationX() float64{
 // l'écart-type For Y-Axis
 func (l *FeatureExtractor) deviationY() float64{
 	var avgY float64 = l.__avgY__
-	var length = float64(l.length())
+	var length = float64(l.Length())
 	var deviation float64 = 0
 
 	for _,elt := range l.Data.GetSensors(){
@@ -144,7 +144,7 @@ func (l *FeatureExtractor) deviationY() float64{
 // l'écart-type For Z-Axis
 func (l *FeatureExtractor) deviationZ() float64{
 	var avgZ float64 = l.__avgZ__
-	var length = float64(l.length())
+	var length = float64(l.Length())
 	var deviation float64 = 0
 
 	for _,elt := range l.Data.GetSensors(){
@@ -162,7 +162,7 @@ func (l *FeatureExtractor) deviationTotal() float64{
 // Skewness For X-Axis
 func (l *FeatureExtractor) skewnessX() float64{
 	var avg float64 = l.__avgX__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationX__
 
 	var skew float64 = 0
@@ -176,7 +176,7 @@ func (l *FeatureExtractor) skewnessX() float64{
 // Skewness For Y-Axis
 func (l *FeatureExtractor) skewnessY() float64{
 	var avg float64 = l.__avgY__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationY__
 
 	var skew float64 = 0
@@ -190,7 +190,7 @@ func (l *FeatureExtractor) skewnessY() float64{
 // Skewness For Y-Axis
 func (l *FeatureExtractor) skewnessZ() float64{
 	var avg float64 = l.__avgZ__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationZ__
 
 	var skew float64 = 0
@@ -210,7 +210,7 @@ func (l *FeatureExtractor) skewnessTotal() float64{
 // Kurtosis For X-Axis
 func (l *FeatureExtractor) kurtosisX() float64{
 	var avg float64 = l.__avgX__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationX__
 
 	var kurtosis float64 = 0
@@ -226,7 +226,7 @@ func (l *FeatureExtractor) kurtosisX() float64{
 // Kurtosis For Y-Axis
 func (l *FeatureExtractor) kurtosisY() float64{
 	var avg float64 = l.__avgY__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationY__
 
 	var kurtosis float64 = 0
@@ -242,7 +242,7 @@ func (l *FeatureExtractor) kurtosisY() float64{
 // Kurtosis For Z-Axis
 func (l *FeatureExtractor) kurtosisZ() float64{
 	var avg float64 = l.__avgZ__
-	var length float64 = float64(l.length())
+	var length float64 = float64(l.Length())
 	var deviation float64 = l.__deviationZ__
 
 	var kurtosis float64 = 0
@@ -268,7 +268,7 @@ func (l *FeatureExtractor) __avg_corr_total() float64{
 		total += elt.y
 		total += elt.z
 	}
-	total /= float64(l.length())
+	total /= float64(l.Length())
 	return total
 }
 // Correlation between X and Y
@@ -277,7 +277,7 @@ func (l *FeatureExtractor) corr_x_y() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.x * elt.y)
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgX__*l.__avgY__
 	var std float64 = l.__deviationX__ * l.__deviationY__
@@ -289,7 +289,7 @@ func (l *FeatureExtractor) corr_x_z() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.x * elt.z)
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgX__*l.__avgZ__
 	var std float64 = l.__deviationX__ * l.__deviationZ__
@@ -301,7 +301,7 @@ func (l *FeatureExtractor) corr_y_z() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.y * elt.z)
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgY__*l.__avgZ__
 	var std float64 = l.__deviationY__ * l.__deviationZ__
@@ -313,7 +313,7 @@ func (l *FeatureExtractor) corr_x_total() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.x *(elt.x + elt.y + elt.z))
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgX__*l.__avg_corr_total()
 	var std float64 = l.__deviationX__ * l.__deviationTotal__
@@ -325,7 +325,7 @@ func (l *FeatureExtractor) corr_y_total() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.y *(elt.x + elt.y + elt.z))
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgY__*l.__avg_corr_total()
 	var std float64 = l.__deviationY__ * l.__deviationTotal__
@@ -337,7 +337,7 @@ func (l *FeatureExtractor) corr_z_total() float64{
 	for _, elt := range l.Data.GetSensors(){
 		mult += (elt.z *(elt.x + elt.y + elt.z))
 	}
-	mult /= float64(l.length())
+	mult /= float64(l.Length())
 
 	var cov float64 = mult - l.__avgZ__*l.__avg_corr_total()
 	var std float64 = l.__deviationZ__ * l.__deviationTotal__
@@ -356,7 +356,7 @@ func (l *FeatureExtractor) zero_crossing_rate_x() float64{
 			zero_count ++
 		}
 	}
-	zero_count /= float64(l.length())
+	zero_count /= float64(l.Length())
 	return zero_count
 }
 // Zero-Crossing Rate on Y-Axis
@@ -370,7 +370,7 @@ func (l *FeatureExtractor) zero_crossing_rate_y() float64{
 			zero_count ++
 		}
 	}
-	zero_count /= float64(l.length())
+	zero_count /= float64(l.Length())
 	return zero_count
 }
 // Zero-Crossing Rate on Z-Axis
@@ -384,7 +384,7 @@ func (l *FeatureExtractor) zero_crossing_rate_z() float64{
 			zero_count ++
 		}
 	}
-	zero_count /= float64(l.length())
+	zero_count /= float64(l.Length())
 	return zero_count
 }
 // Zero-Crossing Rate on All combined axis
@@ -512,20 +512,50 @@ func (l *FeatureExtractor) entropyZ() float64{
 	return result
 }
 
-// Méthode affichant un résumé
+// Method to get a single data from Features
+func (l *FeatureExtractor) GetFeature(n int) float64{
+	switch(n){
+		case 0x00: return l.__avgX__;				break;
+		case 0x01: return l.__avgY__;				break;
+		case 0x02: return l.__avgZ__;				break;
+		case 0x03: return l.__avgTotal__;			break;
+		case 0x04: return l.__deviationX__;			break;
+		case 0x05: return l.__deviationY__;			break;
+		case 0x06: return l.__deviationZ__;			break;
+		case 0x07: return l.__deviationTotal__;		break;
+		case 0x08: return l.__skewnessX__;			break;
+		case 0x09: return l.__skewnessY__;			break;
+		case 0x0A: return l.__skewnessZ__;			break;
+		case 0x0B: return l.__skewnessTotal__;		break;
+		case 0x0C: return l.__kurtosisX__;			break;
+		case 0x0D: return l.__kurtosisY__;			break;
+		case 0x0E: return l.__kurtosisZ__;			break;
+		case 0x0F: return l.__kurtosisTotal__;		break;
+		case 0x10: return l.__correlationXY__;		break;
+		case 0x11: return l.__correlationXZ__;		break;
+		case 0x12: return l.__correlationXTotal__;	break;
+		case 0x13: return l.__correlationYZ__;		break;
+		case 0x14: return l.__correlationYTotal__;	break;
+		case 0x15: return l.__correlationZTotal__;	break;
+		case 0x16: return l.__zeroX__;				break;
+		case 0x17: return l.__zeroY__;				break;
+		case 0x18: return l.__zeroZ__;				break;
+		case 0x19: return l.__zeroTotal__;			break;
+		case 0x1A: return l.__dcX__;				break;
+		case 0x1B: return l.__dcY__;				break;
+		case 0x1C: return l.__dcZ__;				break;
+		case 0x1D: return l.__energyX__;			break;
+		case 0x1E: return l.__energyY__;			break;
+		case 0x1F: return l.__energyZ__;			break;
+		case 0x20: return l.__entropyX__;			break;
+		case 0x21: return l.__entropyY__;			break;
+		case 0x22: return l.__entropyZ__;			break;
+	}
+	return 0
+}
+
+// Print data
 func (l *FeatureExtractor) Print() {
-	/*
-	start_1 := time.Now()
-	l.calc_feature_temporal()
-	elapsed_1 := time.Since(start_1)
-
-	start_2 := time.Now()
-	l.calc_feature_frequential()
-	elapsed_2 := time.Since(start_2)
-
-	fmt.Printf("Temporal features took %s\n", elapsed_1 )
-	fmt.Printf("Frequential features took %s\n", elapsed_2 )
-	*/
 
 	var printed string = ""
 	printed += "\n______________________\n"
@@ -586,7 +616,7 @@ func (l *FeatureExtractor) Print() {
 
 
 	fmt.Printf(printed,
-		l.Name,l.length(),
+		l.Name,l.Length(),
 		l.__avgX__,l.__avgY__,l.__avgZ__,l.__avgTotal__,
 		l.__deviationX__,l.__deviationY__,l.__deviationZ__,l.__deviationTotal__,
 		l.__skewnessX__,l.__skewnessY__,l.__skewnessZ__, l.__skewnessTotal__,
