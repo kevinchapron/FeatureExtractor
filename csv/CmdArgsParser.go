@@ -27,5 +27,22 @@ func ParseArgs() (string,string){
 			FEATURES_FOLDER="./"
 		}
 	}
-	return CSV_FILE,FEATURES_FOLDER
+
+	// Get filename for Feature_file
+	var filename_only string
+	var last_index = strings.LastIndex(CSV_FILE,"/")
+	if(last_index!=-1){
+		filename_only=CSV_FILE[last_index+1:]
+	}else{
+		filename_only=CSV_FILE
+	}
+	// Add _feature_ between filename & extension
+	last_index = strings.LastIndex(filename_only,".")
+	if(last_index!=-1){
+		filename_only=filename_only[:last_index]+"__features__"+filename_only[last_index:]
+	}else{
+		panic(fmt.Sprintf("Error: First parameter have to be a file with extension"))
+	}
+
+	return CSV_FILE,FEATURES_FOLDER+filename_only
 }
