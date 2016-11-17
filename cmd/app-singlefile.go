@@ -6,11 +6,6 @@ import (
 	"github.com/kevinchapron/FeatureExtractor/extractor"
 )
 
-func getSensorsData(float_data [][]float64) (extractor.ListSensor,extractor.ListSensor,extractor.ListSensor){
-	return extractor.GetSensorFromData(float_data,[3]int8{0,1,2}),
-	extractor.GetSensorFromData(float_data,[3]int8{3,4,5}),
-	extractor.GetSensorFromData(float_data,[3]int8{6,7,8});
-}
 
 func main(){
 	CSV_FILE, FEATURES_FILE := csv.ParseArgs()
@@ -23,7 +18,7 @@ func main(){
 	// Convert Data to Float64 slices
 	var float_data = dataFromCsv.GetFloatData()
 	// Extract Accelerometer Data
-	accelerometer_data, gyroscope_data, magnetometer_data := getSensorsData(float_data)
+	accelerometer_data, gyroscope_data, magnetometer_data := GetSensorsData(float_data)
 
 
 

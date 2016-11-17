@@ -46,3 +46,14 @@ func ParseArgs() (string,string){
 
 	return CSV_FILE,FEATURES_FOLDER+filename_only
 }
+
+func ParseArgsMultifile() (string,string){
+	if(len(os.Args) != 3){
+		panic(fmt.Sprintf("Error: Program should be called this way : \n    %s   CSV_FOLDER    FEATURES_FILE",os.Args[0]))
+	}
+	var CSV_FOLDER string = os.Args[1]
+	var FEATURE_FILE string = os.Args[2]
+
+	return CSV_FOLDER,FEATURE_FILE
+}
+
