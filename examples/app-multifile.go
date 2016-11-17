@@ -1,4 +1,4 @@
-package main
+package examples
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"github.com/kevinchapron/FeatureExtractor/extractor"
 )
 
-func main(){
+func Multifile(){
 	CSV_FOLDER, FEATURES_FILE := csv.ParseArgsMultifile()
 
 	// Printings args

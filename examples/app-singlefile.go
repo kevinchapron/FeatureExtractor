@@ -1,4 +1,4 @@
-package main
+package examples
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 )
 
 
-func main(){
+func Singlefile(){
 	CSV_FILE, FEATURES_FILE := csv.ParseArgs()
 
 	// Printings args
