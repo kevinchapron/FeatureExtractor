@@ -1,5 +1,7 @@
 package extractor
 
+
+
 // Definition of Sensor type
 type Sensor struct {
 	x,y,z float64
@@ -46,4 +48,9 @@ func GetSensorFromData(data [][]float64, column_index [3]int8) ListSensor{
 		sensors.AddSensor(sensor)
 	}
 	return sensors
+}
+func GetSensorsData(float_data [][]float64) (ListSensor,ListSensor,ListSensor){
+	return GetSensorFromData(float_data,[3]int8{0,1,2}),
+	GetSensorFromData(float_data,[3]int8{3,4,5}),
+	GetSensorFromData(float_data,[3]int8{6,7,8});
 }

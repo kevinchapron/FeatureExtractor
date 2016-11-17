@@ -36,10 +36,10 @@ Author
 Download
 ---
 To download and use this project, just use the command below : 
-> go get github.com/kevinchapron/FeatureExtractor
+> ```go get github.com/kevinchapron/FeatureExtractor```
 
 To download sources through git, just clone it using the command below : 
-> git clone https://github.com/kevinchapron/FeatureExtractor.git
+> ```git clone https://github.com/kevinchapron/FeatureExtractor.git```
 
 License
 ---

@@ -18,7 +18,7 @@ func main(){
 	// Convert Data to Float64 slices
 	var float_data = dataFromCsv.GetFloatData()
 	// Extract Accelerometer Data
-	accelerometer_data, gyroscope_data, magnetometer_data := GetSensorsData(float_data)
+	accelerometer_data, gyroscope_data, magnetometer_data := extractor.GetSensorsData(float_data)
 
 
 
