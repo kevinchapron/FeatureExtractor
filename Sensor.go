@@ -1,7 +1,5 @@
 package extractor
 
-import "fmt"
-
 // Definition of Sensor type
 type Sensor struct {
 	x,y,z float64
