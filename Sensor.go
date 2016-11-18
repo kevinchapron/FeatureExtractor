@@ -1,5 +1,7 @@
 package extractor
 
+import "fmt"
+
 // Definition of Sensor type
 type Sensor struct {
 	x,y,z float64
@@ -31,6 +33,9 @@ func(sensors *ListSensor) GetSensors() []Sensor{
 
 
 func GetSensorFromData(data [][]float64, column_index [3]int) ListSensor{
+	if(len(data[0])<=column_index[0]){
+		panic(fmt.Sprintf("Error: Too much sensors registered !\nPlease review number of sensors in parameter of function \"%s\"","extractor.GetSensorsData"))
+	}
 	var sensors ListSensor
 	for _, row := range(data){
 		var sensor Sensor

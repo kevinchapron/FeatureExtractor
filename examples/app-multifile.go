@@ -3,7 +3,6 @@ package examples
 import (
 	"fmt"
 	"github.com/kevinchapron/FeatureExtractor/csv"
-	"io/ioutil"
 	"github.com/kevinchapron/FeatureExtractor"
 )
 
@@ -13,17 +12,14 @@ func Multifile(){
 	// Printings args
 	fmt.Printf("CSV_FOLDER: %s\nFEATURES_FILE: %s\n",CSV_FOLDER,FEATURES_FILE)
 
-	files, err := ioutil.ReadDir(CSV_FOLDER)
-	if err != nil {
-		fmt.Printf("Error while reading %s : %v",CSV_FOLDER,err)
-		return
-	}
+	files := csv.GetFilesInFolder(CSV_FOLDER)
 
 	// Declare slice containing all featureExtractor
 	var featuresExtractors [][]extractor.FeatureExtractor
 
 	for _, file := range(files){
-		var filename = CSV_FOLDER+file.Name()
+
+		var filename = CSV_FOLDER+file
 
 		// Getting Data from CSV
 		var dataFromCsv = csv.GetDataFromCSV(filename,true)
