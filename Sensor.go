@@ -1,6 +1,6 @@
 package extractor
 
-
+import "fmt"
 
 // Definition of Sensor type
 type Sensor struct {
@@ -32,7 +32,7 @@ func(sensors *ListSensor) GetSensors() []Sensor{
  */
 
 
-func GetSensorFromData(data [][]float64, column_index [3]int8) ListSensor{
+func GetSensorFromData(data [][]float64, column_index [3]int) ListSensor{
 	var sensors ListSensor
 	for _, row := range(data){
 		var sensor Sensor
@@ -52,7 +52,7 @@ func GetSensorFromData(data [][]float64, column_index [3]int8) ListSensor{
 func GetSensorsData(float_data [][]float64, nb_device int) []ListSensor{
 	var return_value []ListSensor;
 	for i:=0 ; i < nb_device ; i++{
-		return_value = append(return_value,GetSensorFromData(float_data,[3]int8{i*3,(i*3)+1,(i*3)+2}) )
+		return_value = append(return_value,GetSensorFromData(float_data,[3]int{i*3,(i*3)+1,(i*3)+2}) )
 	}
 	return return_value
 }

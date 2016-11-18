@@ -30,7 +30,7 @@ func Multifile(){
 		// Convert Data to Float64 slices
 		var float_data = dataFromCsv.GetFloatData()
 		// Extract Accelerometer Data
-		var devices_data = extractor.GetSensorsData(float_data,3)
+		var devices_data = extractor.GetSensorsData(float_data,2)
 		var accelerometer_data = devices_data[0]
 		var gyroscope_data = devices_data[1]
 		var magnetometer_data = devices_data[2]
