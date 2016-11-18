@@ -1,7 +1,7 @@
 package csv
 
 import (
-	"github.com/kevinchapron/FeatureExtractor/extractor"
+	"github.com/kevinchapron/FeatureExtractor"
 	"fmt"
 	"strconv"
 	"os"

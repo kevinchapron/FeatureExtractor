@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/kevinchapron/FeatureExtractor/csv"
 	"io/ioutil"
-	"github.com/kevinchapron/FeatureExtractor/extractor"
+	"github.com/kevinchapron/FeatureExtractor"
 )
 
 func Multifile(){

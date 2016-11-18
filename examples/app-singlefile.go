@@ -3,7 +3,7 @@ package examples
 import (
 	"fmt"
 	"github.com/kevinchapron/FeatureExtractor/csv"
-	"github.com/kevinchapron/FeatureExtractor/extractor"
+	"github.com/kevinchapron/FeatureExtractor"
 )
 
 
