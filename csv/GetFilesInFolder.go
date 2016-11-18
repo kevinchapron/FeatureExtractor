@@ -17,5 +17,8 @@ func GetFilesInFolder(folder string) []string {
 		}
 		files_only = append(files_only,file_or_folder.Name())
 	}
+	if(len(files_only)==0){
+		panic(fmt.Sprintf("Error: Directory sent has no files in it !"))
+	}
 	return files_only
 }
