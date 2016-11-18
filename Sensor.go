@@ -49,8 +49,10 @@ func GetSensorFromData(data [][]float64, column_index [3]int8) ListSensor{
 	}
 	return sensors
 }
-func GetSensorsData(float_data [][]float64) (ListSensor,ListSensor,ListSensor){
-	return GetSensorFromData(float_data,[3]int8{0,1,2}),
-	GetSensorFromData(float_data,[3]int8{3,4,5}),
-	GetSensorFromData(float_data,[3]int8{6,7,8});
+func GetSensorsData(float_data [][]float64, nb_device int) []ListSensor{
+	var return_value []ListSensor;
+	for i:=0 ; i < nb_device ; i++{
+		return_value = append(return_value,GetSensorFromData(float_data,[3]int8{i*3,(i*3)+1,(i*3)+2}) )
+	}
+	return return_value
 }
