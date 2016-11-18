@@ -18,10 +18,10 @@ func Singlefile(){
 	// Convert Data to Float64 slices
 	var float_data = dataFromCsv.GetFloatData()
 	// Extract Accelerometer Data
-	accelerometer_data, gyroscope_data, magnetometer_data := extractor.GetSensorsData(float_data)
-
-
-
+	var devices_data = extractor.GetSensorsData(float_data,3)
+	var accelerometer_data = devices_data[0]
+	var gyroscope_data = devices_data[1]
+	var magnetometer_data = devices_data[2]
 
 	// Initialize FeatureExtractor
 	var features_accelerometers = extractor.FeatureExtractor{Name:"Accelerometer",Data:accelerometer_data}
