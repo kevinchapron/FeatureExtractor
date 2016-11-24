@@ -512,6 +512,15 @@ func (l *FeatureExtractor) entropyZ() float64{
 	return result
 }
 
+// Method to convert object to map
+func (l *FeatureExtractor) GetMap() map[string]float64{
+	var returnMap = make(map[string]float64)
+	for index, value := range LIST_OF_FEATURES{
+		returnMap[LIST_OF_FEATURES_NAME[index]]=l.GetFeature(value)
+	}
+	return returnMap
+}
+
 // Method to get a single data from Features
 func (l *FeatureExtractor) GetFeature(n int) float64{
 	switch(n){
